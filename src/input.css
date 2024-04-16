@@ -21,3 +21,10 @@ h6 {
 	font-family: 'Inter', sans-serif;
 	--font-sans: 'Inter';
 }
+
+/* 거울 효과 만들기 */
+#localCamera {
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg); /* Safari and Chrome */
+	-moz-transform: rotateY(180deg); /* Firefox */
+}

@@ -1901,6 +1901,11 @@ video {
   background-color: rgb(255 0 0 / var(--tw-bg-opacity));
 }
 
+.bg-background {
+  --tw-bg-opacity: 1;
+  background-color: hsl(0 0% 100% / var(--tw-bg-opacity));
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -1919,6 +1924,11 @@ video {
 .bg-primary {
   --tw-bg-opacity: 1;
   background-color: hsl(240 5.9% 10% / var(--tw-bg-opacity));
+}
+
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .bg-white {
@@ -2219,6 +2229,11 @@ video {
   color: hsl(0 0% 98% / var(--tw-text-opacity));
 }
 
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -2444,6 +2459,10 @@ video {
   --tw-ring-inset: inset;
 }
 
+.ring-offset-background {
+  --tw-ring-offset-color: hsl(0 0% 100%);
+}
+
 .blur {
   --tw-blur: blur(8px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2613,6 +2632,16 @@ h5,
 h6 {
   font-family: 'Inter', sans-serif;
   --font-sans: 'Inter';
+}
+
+/* 거울 효과 만들기 */
+
+#localCamera {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  /* Safari and Chrome */
+  -moz-transform: rotateY(180deg);
+  /* Firefox */
 }
 
 @media (min-width: 640px) {

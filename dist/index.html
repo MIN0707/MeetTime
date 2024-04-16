@@ -39,7 +39,7 @@
 						참가
 					</button>
           <button
-          onclick="openChat()"
+          onclick="toggleChat()"
           class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -64,19 +64,22 @@
 					<div
 						class="flex flex-col flex-1 bg-gray-300 rounded-lg overflow-hidden relative"
 					>
-						<video class="w-full h-full object-cover rounded-md bg-muted"></video>
+						<video class="w-full h-full object-cover rounded-md"></video>
 						</video>
 						<div
 							class="absolute bottom-4 right-4 w-32 h-20 bg-black rounded-lg overflow-hidden"
 						>
 							<video
-								class="w-full h-full object-cover rounded-md bg-muted"
+								class="w-full h-full object-cover rounded-md"
+                id="localCamera"
+                muted
 							></video>
 						</div>
 					</div>
 					<div class="flex gap-2">
 						<button
 							class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+              id="toggleMic"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -100,6 +103,7 @@
 						</button>
 						<button
 							class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+              id="toggleCam"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +125,7 @@
 							<span class="sr-only">Toggle video</span>
 						</button>
 						<button
-							class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 ml-auto"
+							class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 ml-auto bg-red-500 text-white"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +152,7 @@
 					<div class="flex items-center justify-between p-4 border-b">
 						<h2 class="text-lg font-semibold">채팅</h2>
 						<button
-              onclick="closeChat()"
+              onclick="toggleChat()"
 							class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
 						>
 							<svg
@@ -176,7 +180,8 @@
 							<input
 								class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1"
 								placeholder="Type a message..."
-								id="text"
+								id="input"
+                autocomplete="off"
 							/>
 							<button
 								class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
@@ -197,7 +202,7 @@
 									<path d="M5 12h14"></path>
 									<path d="m12 5 7 7-7 7"></path>
 								</svg>
-								<span class="sr-only">Send</span>
+								<span class="sr-only">보내기</span>
 							</button>
 						</form>
 					</div>
