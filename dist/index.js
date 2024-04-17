@@ -41,7 +41,7 @@ async function getMedia() {
 		localCamera.srcObject = localStream;
 		localCamera.play();
 	} catch (error) {
-		console.error('permission error');
+		console.error(error);
 	}
 }
 
