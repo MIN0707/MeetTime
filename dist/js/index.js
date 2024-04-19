@@ -95,7 +95,7 @@ function makeConnection() {
 			},
 		],
 	});
-	console.log('my stream id', localStream.stream.id);
+	console.log('my stream id', localStream);
 	localPc.addEventListener('icecandidate', (data) => {
 		socket.emit('candidate', roomId, data.candidate);
 	});
