@@ -95,17 +95,17 @@ function makeConnection() {
 			},
 		],
 	});
-	console.log('my stream id', localStream);
 	localPc.addEventListener('icecandidate', (data) => {
 		socket.emit('candidate', roomId, data.candidate);
 	});
 	localPc.addEventListener('addstream', (data) => {
-		console.log('remote stream', data.stream);
+		console.log('remote stream', data.stream.getTracks());
 		remoteCamera.srcObject = data.stream;
+		remoteCamera.play();
 		remoteCamera.classList.remove('w-full');
 	});
 	localStream
 		.getTracks()
 		.forEach((track) => localPc.addTrack(track, localStream));
-	console.log('makeConnection');
+	console.log('stream', localStream.getTracks());
 }
