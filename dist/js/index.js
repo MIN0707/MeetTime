@@ -1,4 +1,4 @@
-const { turnUrl, username, password } = require('../../config');
+import { turnUrl, username, password } from '../../config';
 
 const socket = io();
 
