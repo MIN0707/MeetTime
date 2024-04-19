@@ -99,9 +99,9 @@ function makeConnection() {
 		socket.emit('candidate', roomId, data.candidate);
 	});
 	localPc.addEventListener('addstream', (data) => {
+		console.log(data);
 		remoteCamera.srcObject = data.stream;
 		remoteCamera.classList.remove('w-full');
-		console.log('addstream');
 	});
 	localStream
 		.getTracks()
