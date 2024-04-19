@@ -101,6 +101,7 @@ function makeConnection() {
 	});
 	localPc.addEventListener('addstream', (data) => {
 		console.log('remote stream', data.stream);
+		remoteCamera.srcObject = data.stream;
 		remoteCamera.classList.remove('w-full');
 	});
 	localStream
