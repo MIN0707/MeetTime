@@ -100,8 +100,7 @@ function makeConnection() {
 		socket.emit('candidate', roomId, data.candidate);
 	});
 	localPc.addEventListener('addstream', (data) => {
-		console.log(data.stream.id);
-		remoteCamera.srcObject = data.stream;
+		console.log('remote stream', data.stream);
 		remoteCamera.classList.remove('w-full');
 	});
 	localStream
