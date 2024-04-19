@@ -94,7 +94,7 @@ function makeConnection() {
 				],
 			},
 			{
-				urls: 'lulu24.metered.live',
+				urls: 'turn:lulu24.metered.live',
 				username: '77d7a80e71039f2f15a3e711',
 				credential: 'JrUB4uYr4NLz4Ri/',
 			},
