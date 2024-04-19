@@ -4,12 +4,16 @@ const chatOpenButton = document.getElementById('chatOpenButton');
 const form = document.getElementById('form');
 const input = document.getElementById('input');
 const localCamera = document.getElementById('localCamera');
+const remoteCamera = document.getElementById('remoteCamera');
 const toggleMicButton = document.getElementById('toggleMic');
 const toggleCameraButton = document.getElementById('toggleCam');
 
 let toggleMic = true;
 let toggleCam = true;
 let localStream = null;
+let remoteStream = null;
+
+let pc;
 
 function toggleChat() {
 	chatWindow.classList.toggle('hidden');
@@ -47,6 +51,10 @@ async function getMedia() {
 
 getMedia();
 
+function handleRemoteStreamAdded(event) {
+	remoteStream = event.stream;
+}
+
 toggleMicButton.onclick = function () {
 	if (!localStream) return;
 	toggleMic = !toggleMic;
@@ -62,3 +70,10 @@ toggleCameraButton.onclick = function () {
 	toggleCameraButton.classList.toggle('text-white');
 	localStream.getVideoTracks()[0].enabled = toggleCam;
 };
+
+async function makeCall() {
+	const config = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+	const pc = new RTCPeerConnection(config);
+	const desc = pc.createOffer();
+	pc.setLocalDescription(desc);
+}

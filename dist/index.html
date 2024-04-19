@@ -64,15 +64,16 @@
 					<div
 						class="flex flex-col flex-1 bg-gray-300 rounded-lg overflow-hidden relative"
 					>
-						<video class="w-full h-full object-cover rounded-md"></video>
+						<video id="remoteCamera" autoplay class="w-full h-full object-cover rounded-md"></video>
 						</video>
 						<div
 							class="absolute bottom-4 right-4 w-32 h-20 bg-black rounded-lg overflow-hidden"
 						>
 							<video
-								class="w-full h-full object-cover rounded-md"
                 id="localCamera"
                 muted
+                autoplay
+								class="w-full h-full object-cover rounded-md"
 							></video>
 						</div>
 					</div>
