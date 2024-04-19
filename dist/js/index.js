@@ -1,3 +1,5 @@
+const { turnUrl, username, password } = require('../../config');
+
 const socket = io();
 
 const localCamera = document.getElementById('localCamera');
@@ -92,6 +94,11 @@ function makeConnection() {
 					'stun:stun3.l.google.com:19302',
 					'stun:stun4.l.google.com:19302',
 				],
+			},
+			{
+				urls: turnUrl,
+				username: username,
+				credential: password,
 			},
 		],
 	});
