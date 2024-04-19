@@ -95,6 +95,7 @@ function makeConnection() {
 	localPc.addEventListener('addstream', (data) => {
 		remoteCamera.srcObject = data.stream;
 		remoteCamera.classList.remove('w-full');
+		console.log('addstream');
 	});
 	localStream
 		.getTracks()
