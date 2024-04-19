@@ -23,7 +23,7 @@ h6 {
 }
 
 /* 거울 효과 만들기 */
-#localCamera {
+video {
 	transform: rotateY(180deg);
 	-webkit-transform: rotateY(180deg); /* Safari and Chrome */
 	-moz-transform: rotateY(180deg); /* Firefox */
