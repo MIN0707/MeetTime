@@ -11,6 +11,7 @@ let roomId;
 let localPc;
 
 async function start() {
+	console.log('start');
 	await getMedia();
 	makeConnection();
 }
@@ -22,6 +23,7 @@ async function getMedia() {
 			video: true,
 		});
 		localCamera.srcObject = localStream;
+		console.log('media');
 	} catch (error) {
 		document.getElementById('title').innerHTML = error.message;
 		console.error(error);
@@ -55,12 +57,14 @@ function toggleVideo() {
 }
 
 socket.on('userJoin', async () => {
+	console.log('userJoin');
 	const offer = await localPc.createOffer();
 	localPc.setLocalDescription(offer);
 	socket.emit('offer', roomId, offer);
 });
 
 socket.on('offer', async (offer) => {
+	console.log('offer');
 	localPc.setRemoteDescription(offer);
 	const answer = await localPc.createAnswer();
 	localPc.setLocalDescription(answer);
@@ -68,10 +72,12 @@ socket.on('offer', async (offer) => {
 });
 
 socket.on('answer', (answer) => {
+	console.log('answer');
 	localPc.setRemoteDescription(answer);
 });
 
 socket.on('candidate', (candidate) => {
+	console.log('candidate');
 	localPc.addIceCandidate(candidate);
 });
 
@@ -93,4 +99,5 @@ function makeConnection() {
 	localStream
 		.getTracks()
 		.forEach((track) => localPc.addTrack(track, localStream));
+	console.log('makeConnection');
 }
