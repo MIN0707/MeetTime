@@ -95,11 +95,12 @@ function makeConnection() {
 			},
 		],
 	});
+	console.log('my stream id', localStream.stream.id);
 	localPc.addEventListener('icecandidate', (data) => {
 		socket.emit('candidate', roomId, data.candidate);
 	});
 	localPc.addEventListener('addstream', (data) => {
-		console.log(data);
+		console.log(data.stream.id);
 		remoteCamera.srcObject = data.stream;
 		remoteCamera.classList.remove('w-full');
 	});
