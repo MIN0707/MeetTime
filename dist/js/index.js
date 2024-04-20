@@ -110,6 +110,7 @@ function makeConnection() {
 		remoteCamera.srcObject = data.stream;
 		remoteCamera.play();
 		remoteCamera.classList.remove('w-full');
+		console.log(remoteCamera.srcObject);
 	});
 	localStream
 		.getTracks()
