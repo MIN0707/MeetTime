@@ -101,6 +101,8 @@ function makeConnection() {
 		],
 	});
 	localPc.addEventListener('icecandidate', (data) => {
+		console.log('icecandidate', data);
+		if (!data.candidate) return;
 		socket.emit('candidate', roomId, data.candidate);
 	});
 	localPc.addEventListener('addstream', (data) => {
